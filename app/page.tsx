@@ -41,21 +41,32 @@ const Tetris = () => {
 
   // --- 데이터 불러오기 (랭킹) ---
   const fetchRankings = useCallback(async () => {
+    console.log("랭킹 데이터를 가져오는 중...");
     try {
-      const response = await fetch(GOOGLE_SCRIPT_URL);
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'GET',
+        cache: 'no-cache'
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
       if (data && data.rankings) {
         setTopRank(data.rankings);
+        console.log("랭킹 업데이트 성공:", data.rankings);
       }
     } catch (error) {
-      console.error("랭킹 불러오기 실패:", error);
-      // 실패 시 기본 데이터
+      console.warn("랭킹 불러오기 실패 (네트워크 또는 CORS 문제):", error);
+      // 실패 시 기본 데이터 표시
       setTopRank([
         { name: '박주영', time: '00:15' },
         { name: '에이아이', time: '00:22' },
       ]);
     }
   }, [GOOGLE_SCRIPT_URL]);
+
 
   useEffect(() => {
     if (stage === 'INTRO' || stage === 'RESULT') {
@@ -133,7 +144,7 @@ const Tetris = () => {
             <input 
               type="text" 
               placeholder="사용자 이름 입력" 
-              className="px-4 py-2 text-black rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none"
+              className="px-4 py-2 text-white bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-yellow-400 outline-none transition-all placeholder:text-gray-500"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
             />
