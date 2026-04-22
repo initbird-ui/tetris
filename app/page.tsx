@@ -25,7 +25,7 @@ const Tetris = () => {
   const [isSaving, setIsSaving] = useState(false);
 
   // --- 상태 관리 (테트리스 게임용) ---
-  const [grid, setGrid] = useState(Array(20).fill(Array(10).fill(0))); // 게임 박스 (10x20)
+  const [grid, setGrid] = useState<(string | number)[][]>(Array(20).fill(Array(10).fill(0))); // 게임 박스 (10x20)
   const [activePiece, setActivePiece] = useState<{shape: number[][], color: string} | null>(null); // 현재 내려오는 블록
   const [nextPiece, setNextPiece] = useState<TetrominoKey>(RANDOM_KEYS[Math.floor(Math.random() * 5)]); // 다음 블록
   const [pos, setPos] = useState({ x: 3, y: 0 }); // 블록 위치
