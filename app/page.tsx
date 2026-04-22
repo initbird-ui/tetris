@@ -200,6 +200,9 @@ const Tetris = () => {
         const newPos = { ...pos, x: pos.x - 1 };
         if (!checkCollision(newPos, activePiece.shape)) setPos(newPos);
       } else if (e.key === 'ArrowRight') {
+        const newPos = { ...pos, x: pos.x + 1 };
+        if (!checkCollision(newPos, activePiece.shape)) setPos(newPos);
+      } else if (e.key === 'ArrowUp') {
         // 모양 돌리기
         const rotated = rotate(activePiece.shape);
         if (!checkCollision(pos, rotated)) setActivePiece({ ...activePiece, shape: rotated });
