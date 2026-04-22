@@ -195,6 +195,12 @@ const Tetris = () => {
   // 키보드 조작
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // P 또는 Esc 키로 일시정지 토글
+      if (e.key === 'p' || e.key === 'P' || e.key === 'Escape') {
+        setIsPaused(prev => !prev);
+        return;
+      }
+
       if (gameOver || isPaused || !activePiece || !isActive) return;
       if (e.key === 'ArrowLeft') {
         const newPos = { ...pos, x: pos.x - 1 };
