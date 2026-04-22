@@ -33,7 +33,7 @@ const Tetris = () => {
   const [gameOver, setGameOver] = useState(false);
 
   // --- 구글 시트 설정 ---
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzPypBjLr5OWt0R-AfyXJlamDFZRl2C3z1ELRaW_x-NGyOQZAZByA4dFZkYiZiVDE-jJg/exec";
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwj4pv5A8jw1HLcFYwtz9XadBXBiBcs-ROsgf64eRtrl8SfxAk246x3xRZuAPHvDPorfw/exec";
 
   // --- 타이머 로직 ---
   useEffect(() => {
