@@ -390,7 +390,7 @@ const Tetris = () => {
                         {isPaused ? "RESUME" : "PAUSE"}
                     </button>
                     <button 
-                        onClick={() => { setGameOver(true); handleGameFinish(); }}
+                        onClick={resetGame}
                         className="bg-red-700 hover:bg-red-600 py-3 rounded-lg font-bold transition-colors border-b-4 border-red-950 active:translate-y-1 active:border-b-0"
                     >
                         GIVE UP
