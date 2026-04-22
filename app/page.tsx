@@ -366,8 +366,23 @@ const Tetris = () => {
                 <div className="flex flex-col gap-6 text-white">
                     <div className="border border-gray-700 bg-gray-800/50 p-4 rounded-lg text-center shadow-lg">
                         <p className="text-xs text-gray-400 mb-2 font-bold tracking-wider">NEXT</p>
-                        <div className="w-20 h-20 mx-auto flex items-center justify-center bg-black rounded border border-gray-700">
-                            <p className="font-bold text-3xl text-yellow-400">{nextPiece}</p>
+                        <div className="w-24 h-24 mx-auto flex items-center justify-center bg-black rounded border border-gray-700">
+                            <div className="flex flex-col items-center justify-center">
+                                {TETROMINOS[nextPiece].shape.map((row, y) => {
+                                    // 빈 줄(모든 요소가 0인 줄)은 렌더링에서 제외하여 시각적으로 더 깔끔하게 만듦
+                                    if (row.every(val => val === 0)) return null;
+                                    return (
+                                        <div key={`next-row-${y}`} className="flex">
+                                            {row.map((value, x) => (
+                                                <div 
+                                                    key={`next-${y}-${x}`} 
+                                                    className={`w-5 h-5 border-[0.5px] ${value !== 0 ? `${TETROMINOS[nextPiece].color} border-white/50 shadow-inner` : 'border-transparent bg-transparent'}`}
+                                                />
+                                            ))}
+                                        </div>
+                                    );
+                                })}
+                            </div>
                         </div>
                     </div>
                     
