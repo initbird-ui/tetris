@@ -15,7 +15,7 @@ const Tetris = () => {
 
   // --- 구글 시트 설정 ---
   // 구글 앱스 스크립트 배포 후 생성된 웹 앱 URL을 여기에 붙여넣으세요.
-  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby_placeholder/exec";
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwL2njPp4e7vu5r5ProcFOS4pNeGgeeqkEed6Gy29JhPpYn2MyPoN5UOzzrbgQAK71V8A/exec";
 
   // --- 타이머 로직 ---
   useEffect(() => {
